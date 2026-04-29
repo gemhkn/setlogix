@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Icons</title></head>
+<body>
+<canvas id="c192" width="192" height="192"></canvas>
+<canvas id="c512" width="512" height="512"></canvas>
+<script>
+function drawIcon(canvas) {
+  const ctx = canvas.getContext('2d');
+  const s = canvas.width;
+  const m = s / 192;
+
+  // Background
+  ctx.fillStyle = '#0a0a0a';
+  ctx.beginPath();
+  ctx.roundRect(0, 0, s, s, s * 0.18);
+  ctx.fill();
+
+  // Orange "S" hexagon logo
+  const cx = s / 2;
+  const cy = s / 2;
+  const r = s * 0.32;
+
+  // Hexagon
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const angle = (Math.PI / 3) * i - Math.PI / 6;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+  grad.addColorStop(0, '#e86a33');
+  grad.addColorStop(1, '#c85a28');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // "S" letter
+  ctx.fillStyle = 'white';
+  ctx.font = `bold ${s * 0.38}px Inter, Arial, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('S', cx, cy + s * 0.02);
+}
+
+drawIcon(document.getElementById('c192'));
+drawIcon(document.getElementById('c512'));
+
+// Download
+['c192', 'c512'].forEach(id => {
+  const c = document.getElementById(id);
+  c.toBlob(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `icon-${c.width}.png`;
+    document.body.appendChild(a);
+    // a.click(); // uncomment to auto-download
+  }, 'image/png');
+});
+</script>
+</body>
+</html>

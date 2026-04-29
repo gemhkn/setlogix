@@ -1,0 +1,82 @@
+# 🏋️ SetLogix — Workout Tracker PWA
+
+SetLogix is a high-performance, fully state-driven workout tracking Progressive Web App (PWA).  
+It is designed with a custom architecture focused on **speed, reliability, and zero-lag user experience**, comparable to modern React-based applications — but built with pure JavaScript.
+
+---
+
+## 🚀 Features
+
+### ✅ Core System
+- Custom **state management system**
+- Lightweight **router (screen-based navigation)**
+- Persistent storage using local database (Store)
+- Fully **immutable updates**
+
+---
+
+### 🏋️ Workout System
+- Start, track, and finish workouts
+- Add/remove sets dynamically
+- Adjust weight & reps with instant updates
+- Mark sets as completed
+- Auto timer synced with real elapsed time
+- Resume active session after app reload (PWA-safe)
+
+---
+
+### 📊 Progress Tracking
+- Total workouts count
+- Total training volume (kg)
+- Personal records (max weight per exercise)
+- Recent workouts history
+
+---
+
+### 🧮 Calculators
+- **1RM (One Rep Max)** using Epley formula
+- **BMI (Body Mass Index)**
+- Real-time calculation without input lag
+
+---
+
+### 🏠 Dashboard (Home)
+- Weekly workout summary
+- Last workout overview
+- Quick actions (Start / Resume workout)
+
+---
+
+### 🌐 PWA Support
+- Installable on mobile devices
+- Offline capable (Service Worker)
+- Fast loading with caching
+- Native app-like experience
+
+---
+
+## 🧠 Architecture Highlights
+
+- **Strictly state-driven UI**
+- **Granular DOM reconciliation (React-like patching)**
+- Zero unnecessary re-renders
+- No virtual DOM needed
+- Focus-safe updates (no cursor jump while typing)
+
+---
+
+## ⚠️ Edge Case Handling (Production Ready)
+
+### ✔ Active Session Restore
+- App restores active workout after reload
+- Timer recalculates using `createdAt`
+
+### ✔ Ghost Session Prevention
+- Prevents multiple active sessions
+
+### ✔ Data Hygiene
+- Filters out empty or invalid sets before saving
+
+---
+
+## 📁 Project Structure
